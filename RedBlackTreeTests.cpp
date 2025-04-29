@@ -82,14 +82,27 @@ void TestInsertThirdNode(){
 	// more tests go here
 	// consider some symmetry!
 	
-	cout << "TESTS MISSING" << endl << endl;
+	rbt = new RedBlackTree();
+	rbt->Insert(11);
+	rbt->Insert(8);
+	rbt->Insert(14);
+	assert(rbt->ToPrefixString() == " B11  R8  R14 ");
+	delete rbt;
+
 	cout << "PASSED!" << endl << endl;
 }
 
 void TestInsertFourthNode(){
 	cout << "Testing Insert Fourth Node..." << endl;
 
-	cout << "TESTS MISSING" << endl << endl;
+	RedBlackTree *rbt = new RedBlackTree();
+	rbt->Insert(30);
+	rbt->Insert(30);
+	rbt->Insert(30);
+	rbt->Insert(30);
+	//cout << "result: "  << rbt->ToPrefixString() << endl;
+	assert(rbt->ToPrefixString() == " B30  B30  B30  R30 ");
+	delete rbt;
 	
 	cout << "PASSED!" << endl << endl;
 }
@@ -106,7 +119,15 @@ void TestInsertFifthNode(){
 	assert(rbt->ToPrefixString() == " B30  B15  R10  R25  B45 ");
 	delete rbt;
 	
-	cout << "TESTS MISSING" << endl << endl;
+	rbt = new RedBlackTree();
+	rbt->Insert(11);
+	rbt->Insert(8);
+	rbt->Insert(14);
+	rbt->Insert(4);
+	rbt->Insert(20);
+	cout << "result: "  << rbt->ToPrefixString() << endl;
+	assert(rbt->ToPrefixString() == " B11  B8  R4  B14  R20 ");
+	delete rbt;
 	
 	cout << "PASSED!" << endl << endl;
 }
@@ -226,10 +247,10 @@ void TestContains(){
 	rbt->Insert(34);
 	
 	assert(rbt->Contains(34));
+	assert(rbt->Contains(31));
+	assert(rbt->Contains(40));
+	assert(rbt->Contains(29));
 	delete rbt;
-
-	
-	cout << "TESTS MISSING" << endl << endl;
 	cout << "PASSED!" << endl << endl;
 }
 
@@ -239,7 +260,19 @@ void TestContains(){
 void TestGetMinimumMaximum(){
 	cout << "Testing Get Minimum and Get Maximum..." << endl;
 
-	cout << "TESTS MISSING" << endl << endl;
+	RedBlackTree *rbt = new RedBlackTree();
+	rbt->Insert(40);
+	rbt->Insert(22);
+	rbt->Insert(15);
+	rbt->Insert(31);
+	rbt->Insert(55);
+	rbt->Insert(12);
+	rbt->Insert(17);
+	rbt->Insert(29);
+	rbt->Insert(34);
+	assert(rbt->GetMax()==55);
+	assert(rbt->GetMin()==12);
+	delete rbt;
 
 	cout << "PASSED!" << endl << endl;
 }

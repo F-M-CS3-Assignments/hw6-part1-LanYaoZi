@@ -137,8 +137,7 @@ void RedBlackTree::InsertFixUp(RBTNode *new_node){
 
 void  RedBlackTree::LeftRotate(RBTNode *node){
     
-	cout<<"LeftRotate"<<endl;
-
+	//cout<<"LeftRotate"<<endl;
     RBTNode *grand_parent = node;
     RBTNode *parent = node->right;
     if(parent->left!=nullptr){
@@ -165,7 +164,7 @@ void  RedBlackTree::LeftRotate(RBTNode *node){
 
 void RedBlackTree::RightRotate(RBTNode *node){
 
-    cout<<"RightRotate"<<endl;
+    //cout<<"RightRotate"<<endl;
     RBTNode *grand_parent = node;
     RBTNode *parent = node->left;
     if(parent->right!=nullptr){
@@ -191,7 +190,7 @@ void RedBlackTree::RightRotate(RBTNode *node){
 }
 
 void RedBlackTree::Insert(int newData){
-    cout<<"Insert:"<<newData<<endl;
+    //cout<<"Insert:"<<newData<<endl;
     RBTNode *tem_node=new RBTNode;
     tem_node->data=newData;
     if(this->root==nullptr){
