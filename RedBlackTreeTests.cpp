@@ -18,6 +18,7 @@ void TestSimpleConstructor(){
 void TestConstructor(){
 	cout << "Testing Constructor W/Int Input..." << endl;
 	RedBlackTree rbt = RedBlackTree(15);
+	cout << "empty r-b-tree: " << rbt.ToInfixString() << endl;
 	assert(rbt.ToPrefixString() == " B15 ");
 
 	cout << "PASSED!"<< endl << endl;
@@ -27,7 +28,8 @@ void TestInsertFirstNode(){
 	cout << "Testing Insert One Node..." << endl;
 	RedBlackTree rbt = RedBlackTree();
 	rbt.Insert(30);
-	//cout << "rbt: " << rbt.ToPrefixString() << endl;
+	// cout << "rbt: " << rbt.ToPrefixString() << endl;
+	
 	assert(rbt.ToPrefixString() == " B30 ");
 
 	cout << "PASSED!" << endl << endl;
@@ -39,6 +41,7 @@ void TestInsertSecondNode(){
 	RedBlackTree *rbt = new RedBlackTree();
 	rbt->Insert(30);
 	rbt->Insert(15);
+	// cout << "rbt: " << rbt->ToPrefixString() << endl;
 	assert(rbt->ToPrefixString() == " B30  R15 ");
 	delete rbt;
 	
@@ -58,7 +61,7 @@ void TestInsertThirdNode(){
 	rbt->Insert(30);
 	rbt->Insert(15);
 	rbt->Insert(10); // Left Left
-	//cout << "rbt: "  << rbt->ToPrefixString() << endl;
+	cout << "rbt: "  << rbt->ToPrefixString() << endl;
 	assert(rbt->ToPrefixString() == " B15  R10  R30 ");
 	delete rbt;
 	
@@ -119,9 +122,11 @@ void TestToStrings(){
 	rbt.Insert(5);
 	rbt.Insert(13);
 	rbt.Insert(7);
-
+	cout << "result: "<< rbt.ToPrefixString() << endl;
 	assert(rbt.ToPrefixString() == " B12  B7  R5  R11  B15  R13 ");
+	cout << "result: "<< rbt.ToInfixString() << endl;
 	assert(rbt.ToInfixString() == " R5  B7  R11  B12  R13  B15 ");
+	cout << "result: "<< rbt.ToPostfixString() << endl;
 	assert(rbt.ToPostfixString() == " R5  R11  B7  R13  B15  B12 ");
 
 	cout << "PASSED!" << endl << endl;
@@ -182,13 +187,16 @@ void TestCopyConstructor(){
 	rbt1.Insert(31);
 	rbt1.Insert(4);
 
+	cout << "rbt1: "  << rbt1.ToPrefixString() << endl;
 	assert(rbt1.ToPrefixString() == " B11  B9  R4  B31  R23  R52 ");
 
 	RedBlackTree rbt2 = RedBlackTree(rbt1);
 
+	cout << "rbt2: "  << rbt2.ToPrefixString() << endl;
 	assert(rbt2.ToPrefixString() == rbt1.ToPrefixString());
 
 	rbt1.Insert(200);
+	cout << "rbt2_new: "  << rbt2.ToPrefixString() << endl;
 	assert(rbt2.ToPrefixString() != rbt1.ToPrefixString());
 
 	cout << "PASSED!" << endl << endl;
